@@ -1,0 +1,26 @@
+<x-guest-layout>
+    <div class="mb-4 text-sm text-gray-600">
+        {{ __('Please confirm your OTP before continuing.') }}
+    </div>
+
+    <form method="POST" action="{{ route('verify.store') }}">
+        @csrf
+
+        <div>
+            <x-input-label for="code" :value="__('Type OTP')" />
+
+            <x-text-input id="code" class="block mt-1 w-full"
+                            type="text"
+                            name="code"
+                            required />
+
+            <x-input-error :messages="$errors->get('code')" class="mt-2" />
+        </div>
+
+        <div class="flex justify-end mt-4">
+            <x-primary-button>
+                {{ __('Confirm') }}
+            </x-primary-button>
+        </div>
+    </form>
+</x-guest-layout>
